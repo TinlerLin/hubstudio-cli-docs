@@ -12,6 +12,8 @@
       --ui-text:#1f2329; --ui-text-sub:#5f6b7a; --ui-text-tertiary:#8a94a6;
       --ui-border:#e5e6eb; --ui-border-split:#eef0f5; --ui-code-bg:#f2f3f5; --ui-hover:#f3f6ff;
       --ui-sidebar-width:300px; --ui-topbar-height:56px; --ui-radius:8px; --ui-page-max:1680px; --ui-page-gutter:96px;
+      --ui-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+      --ui-font-family-code:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
       color-scheme:light;
     }
     [data-theme="dark"] {
@@ -22,7 +24,7 @@
       color-scheme:dark;
     }
     * { box-sizing:border-box; } html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--ui-body-background); color:var(--ui-text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; font-size:14px; line-height:1.75; }
+    body { margin:0; background:var(--ui-body-background); color:var(--ui-text); font-family:var(--ui-font-family); font-size:14px; line-height:1.75; }
     a { color:var(--ui-primary-color); text-decoration:none; } a:hover { color:var(--ui-primary-color-hover); text-decoration:none; }
     .app-shell { min-height:100vh; background:var(--ui-body-background); }
     .topbar { position:sticky; top:0; z-index:50; height:var(--ui-topbar-height); display:flex; align-items:center; justify-content:space-between; max-width:var(--ui-page-max); margin:0 auto; padding:0 calc(var(--ui-page-gutter) + 12px); border-bottom:1px solid var(--ui-border); background:color-mix(in srgb, var(--ui-fill) 92%, transparent); backdrop-filter:blur(14px); }
@@ -34,7 +36,7 @@
     .theme-toggle { width:28px; height:28px; display:grid; place-items:center; border:0; background:transparent; color:var(--ui-text-sub); border-radius:7px; cursor:pointer; font-size:15px; line-height:1; } .theme-toggle:hover { background:var(--ui-hover); color:var(--ui-primary-color); }
     .sidebar-search { width:100%; display:flex; align-items:center; gap:8px; margin:0 0 14px; padding:8px 10px; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill-secondary); color:var(--ui-text-tertiary); cursor:pointer; text-align:left; }
     .sidebar-search:hover { border-color:var(--ui-primary-color); background:var(--ui-hover); color:var(--ui-primary-color); }
-    .sidebar-search kbd { margin-left:auto; padding:1px 6px; border:1px solid var(--ui-border); border-radius:5px; background:var(--ui-fill); color:var(--ui-text-tertiary); font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:11px; }
+    .sidebar-search kbd { margin-left:auto; padding:1px 6px; border:1px solid var(--ui-border); border-radius:5px; background:var(--ui-fill); color:var(--ui-text-tertiary); font-family:var(--ui-font-family-code); font-size:11px; }
     .search-overlay { position:fixed; inset:0; z-index:100; display:none; align-items:flex-start; justify-content:center; padding-top:8vh; background:rgba(33,41,66,.55); backdrop-filter:blur(2px); }
     .search-overlay.open { display:flex; }
     .search-dialog { width:min(640px, calc(100vw - 32px)); border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill); box-shadow:0 18px 60px rgba(0,0,0,.22); overflow:hidden; }
@@ -54,7 +56,7 @@
     .sidebar::-webkit-scrollbar-thumb:hover { background:#b9c1d2; }
     .sidebar-header { padding:4px 10px 12px; color:var(--ui-text-tertiary); font-size:12px; font-weight:600; }
     .toc-link { display:block; color:var(--ui-text-sub); border-radius:7px; padding:6px 10px; line-height:1.45; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .toc-link:hover { background:var(--ui-hover); color:var(--ui-primary-color); } .level-1 { font-weight:600; color:var(--ui-text); } .level-2 { margin-top:4px; font-weight:600; color:var(--ui-text); } .level-3 { padding-left:22px; } .level-4 { padding-left:34px; font-size:12px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    .toc-link:hover { background:var(--ui-hover); color:var(--ui-primary-color); } .level-1 { font-weight:600; color:var(--ui-text); } .level-2 { margin-top:4px; font-weight:600; color:var(--ui-text); } .level-3 { padding-left:22px; } .level-4 { padding-left:34px; font-size:12px; font-family:var(--ui-font-family-code); }
     .toc-group { margin-top:4px; }
     .toc-group-head { display:flex; align-items:center; gap:4px; border-radius:7px; color:var(--ui-text-sub); }
     .toc-group-head:hover { background:var(--ui-hover); }
@@ -73,9 +75,9 @@
     .hero { margin-bottom:24px; padding-bottom:22px; border-bottom:1px solid var(--ui-border-split); }
     .hero h1 { margin:0 0 8px; font-size:34px; line-height:1.18; letter-spacing:-.02em; } .hero p { margin:0; color:var(--ui-text-sub); max-width:760px; }
     .content { min-width:0; } .content h1 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; } .content h2 { margin:40px 0 16px; padding-top:22px; border-top:1px solid var(--ui-border-split); font-size:24px; line-height:1.35; } .content h2:first-child { border-top:0; } .content h3 { margin:30px 0 12px; font-size:20px; } .content h4,.content h5 { scroll-margin-top:76px; margin:24px 0 10px; font-size:17px; }
-    .endpoint-title { display:flex; align-items:center; gap:10px; border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill-secondary); padding:12px 14px; } .endpoint-title::before { content:"POST"; flex:0 0 auto; color:#fff; background:var(--ui-primary-color); border-radius:5px; padding:2px 7px; font-size:11px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    .endpoint-title { display:flex; align-items:center; gap:10px; border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill-secondary); padding:12px 14px; } .endpoint-title::before { content:"POST"; flex:0 0 auto; color:#fff; background:var(--ui-primary-color); border-radius:5px; padding:2px 7px; font-size:11px; font-family:var(--ui-font-family-code); }
     p,li { color:var(--ui-text-sub); } ul { padding-left:1.35rem; }
-    code { background:var(--ui-code-bg); color:var(--ui-text); border:1px solid var(--ui-border-split); border-radius:5px; padding:.12em .4em; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.92em; }
+    code { background:var(--ui-code-bg); color:var(--ui-text); border:1px solid var(--ui-border-split); border-radius:5px; padding:.12em .4em; font-family:var(--ui-font-family-code); font-size:.92em; }
     pre { position:relative; overflow:auto; padding:16px; border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill-secondary); color:var(--ui-text); } pre code { background:transparent; border:0; padding:0; } .copy-btn { position:absolute; right:10px; top:10px; border:1px solid var(--ui-border); border-radius:6px; background:var(--ui-fill); color:var(--ui-text-sub); font-size:12px; padding:3px 8px; cursor:pointer; }
     table { width:100%; border-collapse:collapse; margin:12px 0 24px; font-size:14px; } .content table { display:block; overflow-x:auto; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill); } th,td { padding:11px 12px; border-right:1px solid var(--ui-border); border-bottom:1px solid var(--ui-border); vertical-align:top; } th { background:var(--ui-fill-secondary); color:var(--ui-text); font-weight:600; } tr:last-child td { border-bottom:0; } th:last-child,td:last-child { border-right:0; } td:nth-child(1),td:nth-child(2) { white-space:nowrap; }
     .back-to-top { position:fixed; right:22px; bottom:22px; width:38px; height:38px; display:grid; place-items:center; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill); color:var(--ui-primary-color); }
@@ -87,7 +89,7 @@
 <body id="top">
   <div class="app-shell">
     <header class="topbar"><div class="brand"><img src="https://cdn.apifox.com/app/project-icon/custom/20251121/89966761-b809-4240-bc20-f1b84e02e347.png" alt="Hubstudio" /><span class="brand-title">Hubstudio</span><span class="brand-subtitle">CLI 命令行操作手册</span><button class="theme-toggle" type="button" id="themeToggle" title="切换暗黑模式" aria-label="切换暗黑模式">☀</button></div><div class="top-actions"><a class="doc-link" href="https://api-docs.hubstudio.cn/">API 使用说明文档</a></div></header>
-    <div class="layout"><aside class="sidebar" aria-label="页面目录"><button class="sidebar-search" type="button" id="openSearch"><span>⌕</span><span>搜索</span><kbd>Ctrl K</kbd></button><div class="sidebar-header">页面目录</div><nav><a class="toc-link level-1" href="#top">Hubstudio CLI 命令行操作手册</a>
+    <div class="layout"><aside class="sidebar" aria-label="页面目录"><button class="sidebar-search" type="button" id="openSearch"><span>⌕</span><span>搜索</span><kbd>Ctrl K</kbd></button><nav><a class="toc-link level-1" href="#top">Hubstudio CLI 命令行操作手册</a>
 <a class="toc-link level-2" href="#适用对象">适用对象</a>
 <a class="toc-link level-2" href="#快速开始">快速开始</a>
 <a class="toc-link level-2" href="#常用命令速查">常用命令速查</a>

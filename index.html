@@ -92,6 +92,8 @@
     .endpoint-meta-row { display:flex; align-items:baseline; gap:8px; }
     .endpoint-meta-label { width:72px; flex:0 0 72px; color:var(--ui-text-sub); }
     .endpoint-meta code { font-size:12px; }
+    .empty-params { margin:12px 0 22px; color:var(--ui-text-sub); }
+    .empty-params span { margin-right:4px; color:var(--ui-text); font-weight:500; }
     p,li { color:var(--ui-text-sub); } p { margin:12px 0; } ul { padding-left:1.35rem; }
     .plain-list, .audience-list, .prerequisite-list { margin:8px 0 0; padding-left:1.35rem; list-style: disc; }
     .plain-list li, .audience-list li, .prerequisite-list li { color:var(--ui-text-sub); margin:2px 0; }
@@ -103,17 +105,22 @@
     .copy-btn:hover { color:var(--ui-primary-color); background:var(--ui-hover); }
     .copy-btn.copied::before { content:"✓"; width:auto; height:auto; border:0; color:var(--ui-primary-color); font-size:15px; font-weight:700; transform:none; }
     .copy-btn.copied::after { display:none; }
-    table { width:100%; border-collapse:collapse; margin:12px 0 24px; font-size:14px; table-layout:fixed; } .content table { display:table; overflow:visible; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill); } th,td { padding:11px 12px; border-right:1px solid var(--ui-border); border-bottom:1px solid var(--ui-border); vertical-align:top; word-break:break-word; } th { background:var(--ui-fill-secondary); color:var(--ui-text); font-weight:600; } tr:last-child td { border-bottom:0; } th:last-child,td:last-child { border-right:0; }
-    .content table:not(.quick-command-table) th:nth-child(1),.content table:not(.quick-command-table) td:nth-child(1) { width:180px; }
-    .content table:not(.quick-command-table) th:nth-child(2),.content table:not(.quick-command-table) td:nth-child(2) { width:160px; }
-    .content table:not(.quick-command-table) th:nth-child(3),.content table:not(.quick-command-table) td:nth-child(3) { width:64px; text-align:center; }
-    .content table:not(.quick-command-table) th:nth-child(4),.content table:not(.quick-command-table) td:nth-child(4) { width:auto; }
-    .content table:not(.quick-command-table) td code { white-space:normal; word-break:break-word; }
+    table { width:100%; border-collapse:collapse; margin:12px 0 24px; font-size:14px; table-layout:fixed; } .content table { display:table; overflow:visible; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill); } th,td { padding:11px 12px; border-right:1px solid var(--ui-border); border-bottom:1px solid var(--ui-border); vertical-align:top; word-break:break-word; font:inherit; } th { padding-left:14px; background:var(--ui-fill-secondary); color:var(--ui-text); font-weight:600; text-align:left; } tr:last-child td { border-bottom:0; } th:last-child,td:last-child { border-right:0; }
+    .content table:not(.quick-command-table):not(.faq-table) th:nth-child(1),.content table:not(.quick-command-table):not(.faq-table) td:nth-child(1) { width:180px; }
+    .content table:not(.quick-command-table):not(.faq-table) th:nth-child(2),.content table:not(.quick-command-table):not(.faq-table) td:nth-child(2) { width:160px; }
+    .content table:not(.quick-command-table):not(.faq-table) th:nth-child(3),.content table:not(.quick-command-table):not(.faq-table) td:nth-child(3) { width:64px; text-align:center; }
+    .content table:not(.quick-command-table):not(.faq-table) th:nth-child(4),.content table:not(.quick-command-table):not(.faq-table) td:nth-child(4) { width:auto; }
+    .content table:not(.quick-command-table):not(.faq-table) td code { white-space:normal; word-break:break-word; }
     .quick-command-table { display:table !important; table-layout:fixed; overflow:visible !important; }
     .quick-command-table th:first-child,.quick-command-table td:first-child { width:150px; }
     .quick-command-table th:nth-child(2),.quick-command-table td:nth-child(2) { width:auto; }
     .quick-command-table td:nth-child(2) code { display:inline-block; max-width:100%; white-space:normal; word-break:break-all; }
-    @media (max-width:900px) { .content table:not(.quick-command-table) th:nth-child(1),.content table:not(.quick-command-table) td:nth-child(1) { width:130px; } .content table:not(.quick-command-table) th:nth-child(2),.content table:not(.quick-command-table) td:nth-child(2) { width:110px; } }
+    .faq-table { table-layout:fixed; }
+    .faq-table th:nth-child(1),.faq-table td:nth-child(1) { width:190px; }
+    .faq-table th:nth-child(2),.faq-table td:nth-child(2) { width:260px; }
+    .faq-table th:nth-child(3),.faq-table td:nth-child(3) { width:auto; text-align:left; }
+    .faq-table th:nth-child(3) { text-align:left !important; }
+    @media (max-width:900px) { .content table:not(.quick-command-table):not(.faq-table) th:nth-child(1),.content table:not(.quick-command-table):not(.faq-table) td:nth-child(1) { width:130px; } .content table:not(.quick-command-table):not(.faq-table) th:nth-child(2),.content table:not(.quick-command-table):not(.faq-table) td:nth-child(2) { width:110px; } .faq-table th:nth-child(1),.faq-table td:nth-child(1) { width:140px; } .faq-table th:nth-child(2),.faq-table td:nth-child(2) { width:150px; } }
     .back-to-top { position:fixed; right:22px; bottom:22px; width:44px; height:44px; display:grid; place-items:center; border:1px solid color-mix(in srgb, var(--ui-primary-color) 45%, var(--ui-border)); border-radius:12px; background:var(--ui-fill); color:var(--ui-primary-color); box-shadow:0 10px 28px rgba(47,107,255,.18); font-size:0; line-height:1; }
     .back-to-top::before { content:""; width:0; height:0; border-left:9px solid transparent; border-right:9px solid transparent; border-bottom:13px solid currentColor; transform:translateY(-1px); }
     .back-to-top:hover { background:var(--ui-primary-color); color:#fff; box-shadow:0 14px 34px rgba(47,107,255,.3); }
@@ -1708,8 +1715,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/stop-all</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052366e0" target="_blank" rel="noopener noreferrer">关闭所有环境</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h4 id="browser-status" class="endpoint-title"><code>browser-status</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/all-browser-status</code></div>
@@ -1763,8 +1769,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/display/all</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052367e0" target="_blank" rel="noopener noreferrer">获取全部屏幕（物理机的屏幕）</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h4 id="arrange-browsers" class="endpoint-title"><code>arrange-browsers</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/arrange</code></div>
@@ -1934,36 +1939,31 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/install</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052354e0" target="_blank" rel="noopener noreferrer">app 应用安装</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h5 id="cloud-mobile-app-start" class="endpoint-title"><code>cloud-mobile-app-start</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/start</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052356e0" target="_blank" rel="noopener noreferrer">APP 启动</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h5 id="cloud-mobile-app-restart" class="endpoint-title"><code>cloud-mobile-app-restart</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/restart</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052355e0" target="_blank" rel="noopener noreferrer">APP 重启</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h5 id="cloud-mobile-app-stop" class="endpoint-title"><code>cloud-mobile-app-stop</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/stop</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052357e0" target="_blank" rel="noopener noreferrer">APP 停止</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h5 id="cloud-mobile-app-uninstall" class="endpoint-title"><code>cloud-mobile-app-uninstall</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/uninstall</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052358e0" target="_blank" rel="noopener noreferrer">APP 卸载</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h4 id="32-文件管理">3.2 文件管理</h4>
 <h5 id="cloud-mobile-upload-file" class="endpoint-title"><code>cloud-mobile-upload-file</code></h5>
 <div class="endpoint-meta">
@@ -2446,8 +2446,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/mobile-product-list</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052338e0" target="_blank" rel="noopener noreferrer">云手机商品列表</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h5 id="cloud-mobile-mobile-page" class="endpoint-title"><code>cloud-mobile-mobile-page</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/mobile-page</code></div>
@@ -2537,15 +2536,13 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/get-country-time-zone-language-list</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052341e0" target="_blank" rel="noopener noreferrer">国家时区语言列表</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h5 id="cloud-mobile-power-on-mobile" class="endpoint-title"><code>cloud-mobile-power-on-mobile</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/power-on-mobile</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052342e0" target="_blank" rel="noopener noreferrer">批量开启云手机</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h5 id="cloud-mobile-shutdown-mobile" class="endpoint-title"><code>cloud-mobile-shutdown-mobile</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/shutdown-mobile</code></div>
@@ -3074,30 +3071,26 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/account/update</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052372e0" target="_blank" rel="noopener noreferrer">账号更新</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h4 id="container-add-account" class="endpoint-title"><code>container-add-account</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/container/add-account</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052370e0" target="_blank" rel="noopener noreferrer">添加环境账号</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h4 id="account-del" class="endpoint-title"><code>account-del</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/account/del</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052369e0" target="_blank" rel="noopener noreferrer">账号删除</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h3 id="5-分组管理">5. 分组管理</h3>
 <h4 id="group-list" class="endpoint-title"><code>group-list</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/group/list</code></div>
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052375e0" target="_blank" rel="noopener noreferrer">获取环境分组列表</a></div>
 </div>
-<p>参数清单：</p>
-<p>无请求体参数。</p>
+<p class="empty-params"><span>参数清单：</span>无请求体参数。</p>
 <h4 id="group-create" class="endpoint-title"><code>group-create</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/group/create</code></div>
@@ -3147,7 +3140,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 </tbody>
 </table>
 <h2 id="常见问题">常见问题</h2>
-<table>
+<table class="faq-table">
 <thead>
 <tr>
 <th>问题</th>

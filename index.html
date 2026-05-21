@@ -25,7 +25,7 @@
     body { margin:0; background:var(--ui-body-background); color:var(--ui-text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; font-size:14px; line-height:1.75; }
     a { color:var(--ui-primary-color); text-decoration:none; } a:hover { color:var(--ui-primary-color-hover); text-decoration:none; }
     .app-shell { min-height:100vh; background:var(--ui-body-background); }
-    .topbar { position:sticky; top:0; z-index:50; height:var(--ui-topbar-height); display:flex; align-items:center; justify-content:space-between; max-width:var(--ui-page-max); margin:0 auto; padding:0 22px; border-bottom:1px solid var(--ui-border); background:color-mix(in srgb, var(--ui-fill) 92%, transparent); backdrop-filter:blur(14px); }
+    .topbar { position:sticky; top:0; z-index:50; height:var(--ui-topbar-height); display:flex; align-items:center; justify-content:space-between; max-width:var(--ui-page-max); margin:0 auto; padding:0 var(--ui-page-gutter); border-bottom:1px solid var(--ui-border); background:color-mix(in srgb, var(--ui-fill) 92%, transparent); backdrop-filter:blur(14px); }
     .topbar::before { content:""; position:fixed; left:0; right:0; top:0; height:var(--ui-topbar-height); z-index:-1; background:color-mix(in srgb, var(--ui-fill) 92%, transparent); border-bottom:1px solid var(--ui-border); backdrop-filter:blur(14px); }
     .brand { display:flex; align-items:center; gap:10px; min-width:0; }
     .brand img { width:28px; height:28px; border-radius:7px; } .brand-title { font-weight:600; font-size:15px; } .brand-subtitle { color:var(--ui-text-tertiary); font-size:12px; margin-left:8px; }

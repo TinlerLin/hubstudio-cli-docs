@@ -31,7 +31,6 @@
     .sidebar-brand { height:56px; display:flex; align-items:center; gap:10px; padding:0 12px; margin:-16px -12px 14px; border-bottom:1px solid var(--ui-border); }
     .brand { display:flex; align-items:center; gap:10px; min-width:0; flex:1; }
     .brand img { width:28px; height:28px; border-radius:7px; } .brand-title { font-weight:600; font-size:15px; } .brand-subtitle { color:var(--ui-text-tertiary); font-size:12px; margin-left:8px; }
-    .content-header { position:sticky; top:0; z-index:20; min-height:20px; display:flex; align-items:flex-start; justify-content:flex-end; margin:0 0 2px; padding:0 8px 0 0; background:var(--ui-body-background); }
     .top-actions { display:flex; align-items:center; gap:12px; } .doc-link { display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill); color:var(--ui-text); font-size:13px; font-weight:600; box-shadow:0 4px 12px rgba(47,107,255,.06); }
     .doc-link::after { content:"↗"; color:var(--ui-primary-color); font-size:12px; line-height:1; }
     .doc-link:hover { border-color:var(--ui-primary-color); background:var(--ui-hover); color:var(--ui-primary-color); box-shadow:0 8px 20px rgba(47,107,255,.14); }
@@ -86,16 +85,24 @@
     main { min-width:0; }
     .hero { margin-bottom:24px; padding-bottom:22px; border-bottom:1px solid var(--ui-border-split); }
     .hero h1 { margin:0 0 8px; font-size:34px; line-height:1.18; letter-spacing:-.02em; } .hero p { margin:0; color:var(--ui-text-sub); max-width:760px; }
-    .content { min-width:0; } .content h1 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; } .content h2 { margin:40px 0 16px; padding-top:22px; border-top:1px solid var(--ui-border-split); font-size:24px; line-height:1.35; } .content h2:first-child { border-top:0; } .content h3 { margin:30px 0 12px; font-size:20px; } .content h4,.content h5 { scroll-margin-top:76px; margin:24px 0 10px; font-size:17px; }
+    .content { min-width:0; } .content h1 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; } .content h2 { margin:44px 0 18px; padding-top:24px; border-top:1px solid var(--ui-border-split); font-size:24px; line-height:1.35; } .content h2:first-child { border-top:0; } .content h3 { margin:34px 0 14px; font-size:20px; } .content h4,.content h5 { scroll-margin-top:76px; margin:28px 0 12px; font-size:17px; }
     .endpoint-title { display:flex; align-items:center; gap:10px; border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill-secondary); padding:12px 14px; }
     .endpoint-title code { color:#fff; background:var(--ui-primary-color); border-color:var(--ui-primary-color); border-radius:5px; padding:3px 8px; font-size:12px; font-weight:600; }
     .endpoint-meta { margin:10px 0 10px; color:var(--ui-text-sub); font-size:14px; line-height:1.8; }
     .endpoint-meta-row { display:flex; align-items:baseline; gap:8px; }
     .endpoint-meta-label { width:72px; flex:0 0 72px; color:var(--ui-text-sub); }
     .endpoint-meta code { font-size:12px; }
-    p,li { color:var(--ui-text-sub); } ul { padding-left:1.35rem; }
+    p,li { color:var(--ui-text-sub); } p { margin:12px 0; } ul { padding-left:1.35rem; }
+    .plain-list, .audience-list, .prerequisite-list { margin:8px 0 0; padding-left:1.35rem; list-style: disc; }
+    .plain-list li, .audience-list li, .prerequisite-list li { color:var(--ui-text-sub); margin:2px 0; }
+    .plain-list li::marker, .audience-list li::marker, .prerequisite-list li::marker { color:var(--ui-text-sub); }
     code { background:var(--ui-code-bg); color:var(--ui-text); border:1px solid var(--ui-border-split); border-radius:5px; padding:.12em .4em; font-family:var(--ui-font-family-code); font-size:.92em; }
-    pre { position:relative; overflow:auto; padding:16px; border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill-secondary); color:var(--ui-text); } pre code { background:transparent; border:0; padding:0; } .copy-btn { position:absolute; right:10px; top:10px; border:1px solid var(--ui-border); border-radius:6px; background:var(--ui-fill); color:var(--ui-text-sub); font-size:12px; padding:3px 8px; cursor:pointer; }
+    pre { position:relative; overflow:auto; margin:14px 0 22px; padding:18px 16px; border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill-secondary); color:var(--ui-text); } pre + p { margin-top:18px; } p + pre { margin-top:10px; } pre code { background:transparent; border:0; padding:0; } .copy-btn { position:absolute; right:10px; top:10px; width:24px; height:24px; display:grid; place-items:center; border:0; border-radius:6px; background:transparent; color:var(--ui-text-tertiary); padding:0; cursor:pointer; font-size:0; }
+    .copy-btn::before { content:""; width:13px; height:13px; border:1.5px solid currentColor; border-radius:2px; transform:translate(2px,-2px); }
+    .copy-btn::after { content:""; position:absolute; width:13px; height:13px; border:1.5px solid currentColor; border-radius:2px; transform:translate(-2px,2px); background:var(--ui-fill-secondary); }
+    .copy-btn:hover { color:var(--ui-primary-color); background:var(--ui-hover); }
+    .copy-btn.copied::before { content:"✓"; width:auto; height:auto; border:0; color:var(--ui-primary-color); font-size:15px; font-weight:700; transform:none; }
+    .copy-btn.copied::after { display:none; }
     table { width:100%; border-collapse:collapse; margin:12px 0 24px; font-size:14px; table-layout:fixed; } .content table { display:table; overflow:visible; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill); } th,td { padding:11px 12px; border-right:1px solid var(--ui-border); border-bottom:1px solid var(--ui-border); vertical-align:top; word-break:break-word; } th { background:var(--ui-fill-secondary); color:var(--ui-text); font-weight:600; } tr:last-child td { border-bottom:0; } th:last-child,td:last-child { border-right:0; }
     .content table:not(.quick-command-table) th:nth-child(1),.content table:not(.quick-command-table) td:nth-child(1) { width:180px; }
     .content table:not(.quick-command-table) th:nth-child(2),.content table:not(.quick-command-table) td:nth-child(2) { width:160px; }
@@ -112,7 +119,7 @@
     .back-to-top:hover { background:var(--ui-primary-color); color:#fff; box-shadow:0 14px 34px rgba(47,107,255,.3); }
     @media (max-width:1500px) { :root { --ui-page-gutter:48px; } }
     @media (max-width:1200px) { :root { --ui-page-gutter:24px; } .main-wrap { grid-template-columns:minmax(0,1fr); } }
-    @media (max-width:900px) { :root { --ui-page-gutter:0px; } .layout { grid-template-columns:1fr; } .sidebar { position:relative; top:0; height:auto; max-height:360px; border-right:0; border-bottom:1px solid var(--ui-border); } .sidebar-brand { margin:-16px -12px 14px; } .main-wrap { padding:24px 18px 56px; } .brand-subtitle,.doc-link { display:none; } }
+    @media (max-width:900px) { :root { --ui-page-gutter:0px; } .layout { grid-template-columns:1fr; } .sidebar { position:relative; top:0; height:auto; max-height:360px; border-right:0; border-bottom:1px solid var(--ui-border); } .sidebar-brand { margin:-16px -12px 14px; } .main-wrap { padding:24px 18px 56px; } .brand-subtitle { display:none; } }
   </style>
 </head>
 <body id="top">
@@ -167,13 +174,13 @@
 <a class="toc-link level-4" href="#group-list">获取环境分组列表</a>
 <a class="toc-link level-4" href="#group-create">新建环境分组</a>
 <a class="toc-link level-4" href="#group-del">删除环境分组</a>
-<a class="toc-link level-2" href="#常见问题">常见问题</a></nav></aside><div class="main-wrap"><main><div class="content-header"><a class="doc-link" href="https://api-docs.hubstudio.cn/" target="_blank" rel="noopener noreferrer">API 使用说明文档</a></div><section class="hero"><h1>Hubstudio CLI 命令行操作手册</h1><p>面向产品用户的命令行指南，覆盖快速开始、请求体写法、命令分组和每个 Local API 子命令的参数清单。</p></section><article class="content"><h1 id="hubstudio-cli-命令行操作手册">Hubstudio CLI 命令行操作手册</h1>
+<a class="toc-link level-2" href="#常见问题">常见问题</a></nav></aside><div class="main-wrap"><main><section class="hero"><h1>Hubstudio CLI 命令行操作手册</h1><p>面向产品用户的命令行指南，覆盖快速开始、请求体写法、命令分组和每个 Local API 子命令的参数清单。</p></section><article class="content"><h1 id="hubstudio-cli-命令行操作手册">Hubstudio CLI 命令行操作手册</h1>
 <p><code>hubstudio-cli</code> 是随 Hubstudio 客户端分发的独立命令行工具，用于通过命令行调用 Hubstudio 客户端的 Local API。</p>
 <p>它不会启动 Hubstudio 客户端，也不依赖 Node.js。使用前需要先启动 Hubstudio 客户端、完成登录，并在客户端中开启本地 API。</p>
-<p>官网 Local API 文档入口：<a href="https://api-docs.hubstudio.cn/">API 使用说明文档</a>。</p>
+<p>官网 Local API 文档入口：<a class="doc-link doc-link-inline" href="https://api-docs.hubstudio.cn/" target="_blank" rel="noopener noreferrer">API 使用说明文档</a></p>
 <h2 id="适用对象">适用对象</h2>
 <p>本文档适合需要通过命令行完成以下操作的用户：</p>
-<ul>
+<ul class="audience-list">
 <li>打开、关闭或查询浏览器环境。</li>
 <li>查询或管理环境、账号、分组。</li>
 <li>调用云手机、RPA 等 Local API 能力。</li>
@@ -235,7 +242,7 @@ hubstudio-cli start-browser --help
 </tbody>
 </table>
 <h2 id="使用前提">使用前提</h2>
-<ul>
+<ul class="prerequisite-list">
 <li>Hubstudio 图形客户端必须已经启动。</li>
 <li>当前账号必须已登录。</li>
 <li>客户端里的 Local API 必须已开启。</li>
@@ -368,7 +375,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <p><code>hubstudio-cli</code> 的每个子命令都对应一个 Local API <code>POST</code> 接口。命令名由 API 路径去掉 <code>/api/v1/</code> 后将 <code>/</code> 替换为 <code>-</code> 得到，例如 <code>/api/v1/env/list</code> 对应 <code>env-list</code>。</p>
 <p>下面按官网 <a href="https://api-docs.hubstudio.cn/">API 使用说明文档</a> 的分组列出当前 CLI 支持的子命令。每个子命令都包含命令名称、Local API、官网文档和请求体参数清单。</p>
 <p>说明：</p>
-<ul>
+<ul class="plain-list">
 <li>表格中的“参数清单”主要列请求体 JSON 字段；全局选项和认证方式见上文。</li>
 <li>所有接口均通过 <code>POST</code> 调用本地 Local API。</li>
 <li>如果请求体字段较多，建议直接使用 <code>--json</code>，避免 shell 对特殊字符的转义问题。</li>
@@ -378,7 +385,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="env-list" class="endpoint-title"><code>env-list</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/env/list</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052376e0">获取环境列表</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052376e0" target="_blank" rel="noopener noreferrer">获取环境列表</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -468,7 +475,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="env-create" class="endpoint-title"><code>env-create</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/env/create</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052377e0">创建环境</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052377e0" target="_blank" rel="noopener noreferrer">创建环境</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -828,7 +835,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="env-update" class="endpoint-title"><code>env-update</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/env/update</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052378e0">更新环境</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052378e0" target="_blank" rel="noopener noreferrer">更新环境</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1092,7 +1099,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="env-proxy-update" class="endpoint-title"><code>env-proxy-update</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/env/proxy/update</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052379e0">更新环境代理</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052379e0" target="_blank" rel="noopener noreferrer">更新环境代理</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1194,7 +1201,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="env-import-cookie" class="endpoint-title"><code>env-import-cookie</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/env/import-cookie</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052380e0">导入 Cookie</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052380e0" target="_blank" rel="noopener noreferrer">导入 Cookie</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1224,7 +1231,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="env-export-cookie" class="endpoint-title"><code>env-export-cookie</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/env/export-cookie</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052381e0">导出 Cookie</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052381e0" target="_blank" rel="noopener noreferrer">导出 Cookie</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1248,7 +1255,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="env-del" class="endpoint-title"><code>env-del</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/env/del</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052382e0">删除环境</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052382e0" target="_blank" rel="noopener noreferrer">删除环境</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1272,7 +1279,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="env-random-ua" class="endpoint-title"><code>env-random-ua</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/env/random-ua</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052383e0">获取随机 UA</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052383e0" target="_blank" rel="noopener noreferrer">获取随机 UA</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1308,7 +1315,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="clear-cache" class="endpoint-title"><code>clear-cache</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cache/clear</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052384e0">清除环境本地缓存</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052384e0" target="_blank" rel="noopener noreferrer">清除环境本地缓存</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1362,7 +1369,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="reset-extension" class="endpoint-title"><code>reset-extension</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/reset-extension</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052385e0">清理环境内插件缓存</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052385e0" target="_blank" rel="noopener noreferrer">清理环境内插件缓存</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1392,7 +1399,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="env-refresh-fingerprint" class="endpoint-title"><code>env-refresh-fingerprint</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/env/refresh-fingerprint</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052386e0">刷新指纹</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052386e0" target="_blank" rel="noopener noreferrer">刷新指纹</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1434,7 +1441,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="container-webgl-renderer-list" class="endpoint-title"><code>container-webgl-renderer-list</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/container/webgl-renderer-list</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052387e0">查询 webglVendor 和 webglRenderer</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052387e0" target="_blank" rel="noopener noreferrer">查询 webglVendor 和 webglRenderer</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1476,7 +1483,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="container-batch-update-remark" class="endpoint-title"><code>container-batch-update-remark</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/container/batch-update-remark</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052388e0">批量修改备注</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052388e0" target="_blank" rel="noopener noreferrer">批量修改备注</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1512,7 +1519,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="download-browser-core" class="endpoint-title"><code>download-browser-core</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/download-core</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052389e0">下载内核</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052389e0" target="_blank" rel="noopener noreferrer">下载内核</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1548,7 +1555,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="container-update-container-base" class="endpoint-title"><code>container-update-container-base</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/container/update-container-base</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/439846791e0">更新环境基础信息</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/439846791e0" target="_blank" rel="noopener noreferrer">更新环境基础信息</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1591,7 +1598,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="start-browser" class="endpoint-title"><code>start-browser</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/start</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052361e0">打开环境</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052361e0" target="_blank" rel="noopener noreferrer">打开环境</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1669,7 +1676,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="stop-browser" class="endpoint-title"><code>stop-browser</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/stop</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052362e0">关闭环境</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052362e0" target="_blank" rel="noopener noreferrer">关闭环境</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1699,14 +1706,14 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="stop-all-browsers" class="endpoint-title"><code>stop-all-browsers</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/stop-all</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052366e0">关闭所有环境</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052366e0" target="_blank" rel="noopener noreferrer">关闭所有环境</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h4 id="browser-status" class="endpoint-title"><code>browser-status</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/all-browser-status</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052363e0">获取浏览器状态</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052363e0" target="_blank" rel="noopener noreferrer">获取浏览器状态</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1730,7 +1737,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="foreground-browser" class="endpoint-title"><code>foreground-browser</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/foreground</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052364e0">切换浏览器窗口</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052364e0" target="_blank" rel="noopener noreferrer">切换浏览器窗口</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1754,14 +1761,14 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="list-displays" class="endpoint-title"><code>list-displays</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/display/all</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052367e0">获取全部屏幕（物理机的屏幕）</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052367e0" target="_blank" rel="noopener noreferrer">获取全部屏幕（物理机的屏幕）</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h4 id="arrange-browsers" class="endpoint-title"><code>arrange-browsers</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/browser/arrange</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052368e0">浏览器窗口自定义排列</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052368e0" target="_blank" rel="noopener noreferrer">浏览器窗口自定义排列</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1829,7 +1836,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-app-page" class="endpoint-title"><code>cloud-mobile-app-page</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/page</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052350e0">APP 列表(分页)\查询可安装应用列表</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052350e0" target="_blank" rel="noopener noreferrer">APP 列表(分页)\查询可安装应用列表</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1871,7 +1878,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-app-installedlist" class="endpoint-title"><code>cloud-mobile-app-installedList</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/installedList</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052353e0">已安装应用列表查询</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052353e0" target="_blank" rel="noopener noreferrer">已安装应用列表查询</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1895,7 +1902,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-group-app-create" class="endpoint-title"><code>cloud-mobile-group-app-create</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/group/app/create</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/395424141e0">新增团队应用</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/395424141e0" target="_blank" rel="noopener noreferrer">新增团队应用</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -1925,35 +1932,35 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-app-install" class="endpoint-title"><code>cloud-mobile-app-install</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/install</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052354e0">app 应用安装</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052354e0" target="_blank" rel="noopener noreferrer">app 应用安装</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h5 id="cloud-mobile-app-start" class="endpoint-title"><code>cloud-mobile-app-start</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/start</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052356e0">APP 启动</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052356e0" target="_blank" rel="noopener noreferrer">APP 启动</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h5 id="cloud-mobile-app-restart" class="endpoint-title"><code>cloud-mobile-app-restart</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/restart</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052355e0">APP 重启</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052355e0" target="_blank" rel="noopener noreferrer">APP 重启</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h5 id="cloud-mobile-app-stop" class="endpoint-title"><code>cloud-mobile-app-stop</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/stop</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052357e0">APP 停止</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052357e0" target="_blank" rel="noopener noreferrer">APP 停止</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h5 id="cloud-mobile-app-uninstall" class="endpoint-title"><code>cloud-mobile-app-uninstall</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/app/uninstall</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052358e0">APP 卸载</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052358e0" target="_blank" rel="noopener noreferrer">APP 卸载</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
@@ -1961,7 +1968,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-upload-file" class="endpoint-title"><code>cloud-mobile-upload-file</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/upload-file</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/395427282e0">公网文件上传文件到云手机</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/395427282e0" target="_blank" rel="noopener noreferrer">公网文件上传文件到云手机</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2003,7 +2010,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-setkeybox" class="endpoint-title"><code>cloud-mobile-setKeyBox</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/setKeyBox</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380407020e0">设置 keyBox</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380407020e0" target="_blank" rel="noopener noreferrer">设置 keyBox</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2034,7 +2041,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-rpa-task-page" class="endpoint-title"><code>cloud-mobile-rpa-task-page</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/rpa/task/page</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761335e0">RPA-计划分页查询</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761335e0" target="_blank" rel="noopener noreferrer">RPA-计划分页查询</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2082,7 +2089,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-rpa-template-personal-page" class="endpoint-title"><code>cloud-mobile-rpa-template-personal-page</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/rpa/template/personal/page</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761336e0">RPA-个人模板分页查询</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761336e0" target="_blank" rel="noopener noreferrer">RPA-个人模板分页查询</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2118,7 +2125,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-rpa-template-market-page" class="endpoint-title"><code>cloud-mobile-rpa-template-market-page</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/rpa/template/market/page</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761337e0">RPA-市场模板分页查询</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761337e0" target="_blank" rel="noopener noreferrer">RPA-市场模板分页查询</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2154,7 +2161,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-rpa-task-save" class="endpoint-title"><code>cloud-mobile-rpa-task-save</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/rpa/task/save</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761338e0">RPA-保存计划</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761338e0" target="_blank" rel="noopener noreferrer">RPA-保存计划</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2238,7 +2245,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-rpa-task-cancel" class="endpoint-title"><code>cloud-mobile-rpa-task-cancel</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/rpa/task/cancel</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761339e0">RPA-取消计划</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761339e0" target="_blank" rel="noopener noreferrer">RPA-取消计划</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2262,7 +2269,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-rpa-subtask-page" class="endpoint-title"><code>cloud-mobile-rpa-subTask-page</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/rpa/subTask/page</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761340e0">RPA-执行记录分页查询</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761340e0" target="_blank" rel="noopener noreferrer">RPA-执行记录分页查询</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2340,7 +2347,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-rpa-subtask-cancel" class="endpoint-title"><code>cloud-mobile-rpa-subTask-cancel</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/rpa/subTask/cancel</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761341e0">RPA-取消记录</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761341e0" target="_blank" rel="noopener noreferrer">RPA-取消记录</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2364,7 +2371,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-rpa-subtask-detail" class="endpoint-title"><code>cloud-mobile-rpa-subTask-detail</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/rpa/subTask/detail</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761342e0">RPA-记录详情查询</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761342e0" target="_blank" rel="noopener noreferrer">RPA-记录详情查询</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2388,7 +2395,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-rpa-oncetask-save" class="endpoint-title"><code>cloud-mobile-rpa-onceTask-save</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/rpa/onceTask/save</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761343e0">RPA-快速保存一次性计划</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/437761343e0" target="_blank" rel="noopener noreferrer">RPA-快速保存一次性计划</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2437,14 +2444,14 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-mobile-product-list" class="endpoint-title"><code>cloud-mobile-mobile-product-list</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/mobile-product-list</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052338e0">云手机商品列表</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052338e0" target="_blank" rel="noopener noreferrer">云手机商品列表</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h5 id="cloud-mobile-mobile-page" class="endpoint-title"><code>cloud-mobile-mobile-page</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/mobile-page</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052339e0">云手机分页列表</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052339e0" target="_blank" rel="noopener noreferrer">云手机分页列表</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2498,7 +2505,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-add-mobile" class="endpoint-title"><code>cloud-mobile-add-mobile</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/add-mobile</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052340e0">添加云手机</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052340e0" target="_blank" rel="noopener noreferrer">添加云手机</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2528,21 +2535,21 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-get-country-time-zone-language-list" class="endpoint-title"><code>cloud-mobile-get-country-time-zone-language-list</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/get-country-time-zone-language-list</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052341e0">国家时区语言列表</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052341e0" target="_blank" rel="noopener noreferrer">国家时区语言列表</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h5 id="cloud-mobile-power-on-mobile" class="endpoint-title"><code>cloud-mobile-power-on-mobile</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/power-on-mobile</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052342e0">批量开启云手机</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052342e0" target="_blank" rel="noopener noreferrer">批量开启云手机</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h5 id="cloud-mobile-shutdown-mobile" class="endpoint-title"><code>cloud-mobile-shutdown-mobile</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/shutdown-mobile</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052343e0">批量关闭云手机</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052343e0" target="_blank" rel="noopener noreferrer">批量关闭云手机</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2572,7 +2579,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-update-proxy" class="endpoint-title"><code>cloud-mobile-update-proxy</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/update-proxy</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052344e0">更新代理</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052344e0" target="_blank" rel="noopener noreferrer">更新代理</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2710,7 +2717,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-list-adb" class="endpoint-title"><code>cloud-mobile-list-adb</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/list-adb</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052345e0">批量获取云手机 ADB 状态</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052345e0" target="_blank" rel="noopener noreferrer">批量获取云手机 ADB 状态</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2734,7 +2741,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-batch-update-adb" class="endpoint-title"><code>cloud-mobile-batch-update-adb</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/batch-update-adb</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052346e0">批量更新云手机 ADB 状态</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052346e0" target="_blank" rel="noopener noreferrer">批量更新云手机 ADB 状态</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2764,7 +2771,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-new-machine" class="endpoint-title"><code>cloud-mobile-new-machine</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/new-machine</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052347e0">一键新机</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052347e0" target="_blank" rel="noopener noreferrer">一键新机</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2800,7 +2807,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-new-machine-status" class="endpoint-title"><code>cloud-mobile-new-machine-status</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/new-machine-status</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052348e0">获取一键新机状态及可用数量</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052348e0" target="_blank" rel="noopener noreferrer">获取一键新机状态及可用数量</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2824,7 +2831,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-brand-models" class="endpoint-title"><code>cloud-mobile-brand-models</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/brand/models</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052351e0">查询品牌机型</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052351e0" target="_blank" rel="noopener noreferrer">查询品牌机型</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2848,7 +2855,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-exe-command" class="endpoint-title"><code>cloud-mobile-exe-command</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/exe-command</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052359e0">执行 shell 命令</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052359e0" target="_blank" rel="noopener noreferrer">执行 shell 命令</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2884,7 +2891,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-update" class="endpoint-title"><code>cloud-mobile-update</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/update</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052360e0">修改云手机信息</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052360e0" target="_blank" rel="noopener noreferrer">修改云手机信息</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2932,7 +2939,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-simulatesendsms" class="endpoint-title"><code>cloud-mobile-simulateSendSms</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/simulateSendSms</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/395416906e0">发送短信到云手机</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/395416906e0" target="_blank" rel="noopener noreferrer">发送短信到云手机</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2968,7 +2975,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-del-mobile-batch" class="endpoint-title"><code>cloud-mobile-del-mobile-batch</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/del-mobile-batch</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/387838493e0">批量删除云手机</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/387838493e0" target="_blank" rel="noopener noreferrer">批量删除云手机</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -2992,7 +2999,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h5 id="cloud-mobile-set-tag" class="endpoint-title"><code>cloud-mobile-set-tag</code></h5>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/cloud-mobile/set-tag</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/387998970e0">批量修改云手机分组</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/387998970e0" target="_blank" rel="noopener noreferrer">批量修改云手机分组</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -3023,7 +3030,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="account-list" class="endpoint-title"><code>account-list</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/account/list</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052371e0">账号分页列表</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052371e0" target="_blank" rel="noopener noreferrer">账号分页列表</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -3065,21 +3072,21 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="account-update" class="endpoint-title"><code>account-update</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/account/update</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052372e0">账号更新</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052372e0" target="_blank" rel="noopener noreferrer">账号更新</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h4 id="container-add-account" class="endpoint-title"><code>container-add-account</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/container/add-account</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052370e0">添加环境账号</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052370e0" target="_blank" rel="noopener noreferrer">添加环境账号</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h4 id="account-del" class="endpoint-title"><code>account-del</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/account/del</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052369e0">账号删除</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052369e0" target="_blank" rel="noopener noreferrer">账号删除</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
@@ -3087,14 +3094,14 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="group-list" class="endpoint-title"><code>group-list</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/group/list</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052375e0">获取环境分组列表</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052375e0" target="_blank" rel="noopener noreferrer">获取环境分组列表</a></div>
 </div>
 <p>参数清单：</p>
 <p>无请求体参数。</p>
 <h4 id="group-create" class="endpoint-title"><code>group-create</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/group/create</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052374e0">新建环境分组</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052374e0" target="_blank" rel="noopener noreferrer">新建环境分组</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -3118,7 +3125,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <h4 id="group-del" class="endpoint-title"><code>group-del</code></h4>
 <div class="endpoint-meta">
 <div class="endpoint-meta-row"><span class="endpoint-meta-label">Local API：</span><code>POST /api/v1/group/del</code></div>
-<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052373e0">删除环境分组</a></div>
+<div class="endpoint-meta-row"><span class="endpoint-meta-label">官网文档：</span><a href="https://api-docs.hubstudio.cn/380052373e0" target="_blank" rel="noopener noreferrer">删除环境分组</a></div>
 </div>
 <p>参数清单：</p>
 <table>
@@ -3176,7 +3183,7 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
   <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="搜索文档"><div class="search-dialog"><div class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="搜索环境列表、子命令或参数" autocomplete="off" /><button class="search-close" type="button" id="closeSearch" aria-label="关闭搜索">×</button></div><div class="search-results" id="searchResults"></div></div></div>
   <script>
     const root=document.documentElement;const btn=document.getElementById('themeToggle');const saved=localStorage.getItem('hubstudio-doc-theme');if(saved)root.dataset.theme=saved;function syncThemeText(){btn.textContent=root.dataset.theme==='dark'?'☾':'☀';btn.title=root.dataset.theme==='dark'?'切换浅色模式':'切换暗黑模式';}syncThemeText();btn.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('hubstudio-doc-theme',root.dataset.theme);syncThemeText();});
-    document.querySelectorAll('pre').forEach((pre)=>{const b=document.createElement('button');b.className='copy-btn';b.type='button';b.textContent='复制';b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(pre.innerText.replace(/^复制\n/,''));b.textContent='已复制';setTimeout(()=>b.textContent='复制',1200);}catch(e){b.textContent='复制失败';setTimeout(()=>b.textContent='复制',1200);}});pre.appendChild(b);});
+    document.querySelectorAll('pre').forEach((pre)=>{const b=document.createElement('button');b.className='copy-btn';b.type='button';b.title='复制';b.setAttribute('aria-label','复制代码');b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(pre.innerText);b.classList.add('copied');b.title='已复制';setTimeout(()=>{b.classList.remove('copied');b.title='复制';},1200);}catch(e){b.title='复制失败';setTimeout(()=>b.title='复制',1200);}});pre.appendChild(b);});
     
     function buildCollapsibleToc(){const nav=document.querySelector('.sidebar nav');if(!nav)return;const nodes=[...nav.children];let groupIndex=0;for(let i=0;i<nodes.length;i++){const link=nodes[i];if(!link.classList||!link.classList.contains('level-3'))continue;link.textContent=link.textContent.trim().replace(/^\d+(?:\.\d+)?\s*/, '');const children=[];let next=link.nextElementSibling;while(next&&next.classList&&next.classList.contains('level-4')){children.push(next);next=next.nextElementSibling;}if(!children.length)continue;const group=document.createElement('div');group.className=groupIndex===0?'toc-group':'toc-group collapsed';groupIndex+=1;const head=document.createElement('div');head.className='toc-group-head';const toggle=document.createElement('button');toggle.className='toc-toggle';toggle.type='button';toggle.textContent='›';toggle.setAttribute('aria-label','折叠或展开 '+link.textContent.trim());const childWrap=document.createElement('div');childWrap.className='toc-children';link.parentNode.insertBefore(group,link);head.appendChild(link);head.appendChild(toggle);group.appendChild(head);children.forEach(child=>childWrap.appendChild(child));group.appendChild(childWrap);head.addEventListener('click',(e)=>{if(e.target.closest('a'))return;group.classList.toggle('collapsed');});toggle.addEventListener('click',(e)=>{e.preventDefault();e.stopPropagation();group.classList.toggle('collapsed');});i=nodes.indexOf(children[children.length-1]);}}buildCollapsibleToc();
     const overlay=document.getElementById('searchOverlay');const input=document.getElementById('searchInput');const results=document.getElementById('searchResults');const openSearch=document.getElementById('openSearch');const closeSearch=document.getElementById('closeSearch');

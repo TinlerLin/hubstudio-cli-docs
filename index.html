@@ -55,13 +55,19 @@
     .sidebar-header { padding:4px 10px 12px; color:var(--ui-text-tertiary); font-size:12px; font-weight:600; }
     .toc-link { display:block; color:var(--ui-text-sub); border-radius:7px; padding:6px 10px; line-height:1.45; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .toc-link:hover { background:var(--ui-hover); color:var(--ui-primary-color); } .level-1 { font-weight:600; color:var(--ui-text); } .level-2 { margin-top:4px; font-weight:600; color:var(--ui-text); } .level-3 { padding-left:22px; } .level-4 { padding-left:34px; font-size:12px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
-    .main-wrap { min-width:0; display:grid; grid-template-columns:minmax(0,980px) 220px; gap:36px; padding:32px 44px 72px; }
-    main { min-width:0; } .right-rail { position:sticky; top:calc(var(--ui-topbar-height) + 24px); height:fit-content; padding-top:8px; color:var(--ui-text-tertiary); font-size:12px; } .rail-card { border:1px solid var(--ui-border); border-radius:10px; padding:12px; background:var(--ui-fill); } .rail-card b { color:var(--ui-text); font-size:18px; }
+    .toc-group { margin-top:2px; }
+    .toc-group-head { display:flex; align-items:center; gap:4px; border-radius:7px; }
+    .toc-toggle { width:18px; height:28px; display:grid; place-items:center; flex:0 0 auto; border:0; background:transparent; color:var(--ui-text-tertiary); cursor:pointer; border-radius:6px; font-size:11px; transition:transform .16s ease; }
+    .toc-toggle:hover { background:var(--ui-hover); color:var(--ui-primary-color); }
+    .toc-group.collapsed .toc-toggle { transform:rotate(-90deg); }
+    .toc-group-head .toc-link { flex:1; min-width:0; padding-left:0; }
+    .toc-children { overflow:hidden; }
+    .toc-group.collapsed .toc-children { display:none; }
+    .main-wrap { min-width:0; display:grid; grid-template-columns:minmax(0,980px); gap:36px; padding:32px 44px 72px; }
+    main { min-width:0; }
     .hero { margin-bottom:24px; padding-bottom:22px; border-bottom:1px solid var(--ui-border-split); }
-    .eyebrow { display:inline-flex; align-items:center; gap:6px; color:var(--ui-primary-color); background:var(--ui-hover); border-radius:6px; padding:4px 8px; font-size:12px; font-weight:600; }
-    .hero h1 { margin:14px 0 8px; font-size:34px; line-height:1.18; letter-spacing:-.02em; } .hero p { margin:0; color:var(--ui-text-sub); max-width:760px; }
-    .stats { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; } .stat { border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill); padding:10px 12px; min-width:120px; } .stat b { display:block; font-size:20px; line-height:1.1; } .stat span { color:var(--ui-text-tertiary); font-size:12px; }
-    .content { min-width:0; } .content h1 { display:none; } .content h2 { margin:40px 0 16px; padding-top:22px; border-top:1px solid var(--ui-border-split); font-size:24px; line-height:1.35; } .content h2:first-child { border-top:0; margin-top:0; } .content h3 { margin:30px 0 12px; font-size:20px; } .content h4,.content h5 { scroll-margin-top:76px; margin:24px 0 10px; font-size:17px; }
+    .hero h1 { margin:0 0 8px; font-size:34px; line-height:1.18; letter-spacing:-.02em; } .hero p { margin:0; color:var(--ui-text-sub); max-width:760px; }
+    .content { min-width:0; } .content h1 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; } .content h2 { margin:40px 0 16px; padding-top:22px; border-top:1px solid var(--ui-border-split); font-size:24px; line-height:1.35; } .content h2:first-child { border-top:0; } .content h3 { margin:30px 0 12px; font-size:20px; } .content h4,.content h5 { scroll-margin-top:76px; margin:24px 0 10px; font-size:17px; }
     .endpoint-title { display:flex; align-items:center; gap:10px; border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill-secondary); padding:12px 14px; } .endpoint-title::before { content:"POST"; flex:0 0 auto; color:#fff; background:var(--ui-primary-color); border-radius:5px; padding:2px 7px; font-size:11px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
     p,li { color:var(--ui-text-sub); } ul { padding-left:1.35rem; }
     code { background:var(--ui-code-bg); color:var(--ui-text); border:1px solid var(--ui-border-split); border-radius:5px; padding:.12em .4em; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.92em; }
@@ -69,14 +75,14 @@
     table { width:100%; border-collapse:collapse; margin:12px 0 24px; font-size:14px; } .content table { display:block; overflow-x:auto; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill); } th,td { padding:11px 12px; border-right:1px solid var(--ui-border); border-bottom:1px solid var(--ui-border); vertical-align:top; } th { background:var(--ui-fill-secondary); color:var(--ui-text); font-weight:600; } tr:last-child td { border-bottom:0; } th:last-child,td:last-child { border-right:0; } td:nth-child(1),td:nth-child(2) { white-space:nowrap; }
     .back-to-top { position:fixed; right:22px; bottom:22px; width:38px; height:38px; display:grid; place-items:center; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill); color:var(--ui-primary-color); }
     @media (max-width:1500px) { :root { --ui-page-gutter:48px; } }
-    @media (max-width:1200px) { :root { --ui-page-gutter:24px; } .main-wrap { grid-template-columns:minmax(0,1fr); } .right-rail { display:none; } }
+    @media (max-width:1200px) { :root { --ui-page-gutter:24px; } .main-wrap { grid-template-columns:minmax(0,1fr); } }
     @media (max-width:900px) { :root { --ui-page-gutter:0px; } .topbar { padding:0 12px; } .layout { grid-template-columns:1fr; } .sidebar { position:relative; top:0; height:auto; max-height:360px; border-right:0; border-bottom:1px solid var(--ui-border); } .main-wrap { padding:24px 18px 56px; } .brand-subtitle,.doc-link { display:none; } }
   </style>
 </head>
-<body>
+<body id="top">
   <div class="app-shell">
     <header class="topbar"><div class="brand"><img src="https://cdn.apifox.com/app/project-icon/custom/20251121/89966761-b809-4240-bc20-f1b84e02e347.png" alt="Hubstudio" /><span class="brand-title">Hubstudio</span><span class="brand-subtitle">CLI 命令行操作手册</span><button class="theme-toggle" type="button" id="themeToggle" title="切换暗黑模式" aria-label="切换暗黑模式">☀</button></div><div class="top-actions"><a class="doc-link" href="https://api-docs.hubstudio.cn/">API 使用说明文档</a></div></header>
-    <div class="layout"><aside class="sidebar" aria-label="页面目录"><button class="sidebar-search" type="button" id="openSearch"><span>⌕</span><span>搜索</span><kbd>Ctrl K</kbd></button><div class="sidebar-header">页面目录</div><nav><a class="toc-link level-1" href="#hubstudio-cli-命令行操作手册">Hubstudio CLI 命令行操作手册</a>
+    <div class="layout"><aside class="sidebar" aria-label="页面目录"><button class="sidebar-search" type="button" id="openSearch"><span>⌕</span><span>搜索</span><kbd>Ctrl K</kbd></button><div class="sidebar-header">页面目录</div><nav><a class="toc-link level-1" href="#top">Hubstudio CLI 命令行操作手册</a>
 <a class="toc-link level-2" href="#适用对象">适用对象</a>
 <a class="toc-link level-2" href="#快速开始">快速开始</a>
 <a class="toc-link level-2" href="#常用命令速查">常用命令速查</a>
@@ -126,7 +132,7 @@
 <a class="toc-link level-4" href="#group-list">group-list</a>
 <a class="toc-link level-4" href="#group-create">group-create</a>
 <a class="toc-link level-4" href="#group-del">group-del</a>
-<a class="toc-link level-2" href="#常见问题">常见问题</a></nav></aside><div class="main-wrap"><main><section class="hero"><span class="eyebrow">Hubstudio Local API</span><h1>Hubstudio CLI 命令行操作手册</h1><p>面向产品用户的命令行指南，覆盖快速开始、请求体写法、命令分组和每个 Local API 子命令的参数清单。</p><div class="stats"><div class="stat"><b>65</b><span>子命令详情</span></div><div class="stat"><b>5</b><span>业务分组</span></div><div class="stat"><b>POST</b><span>Local API 调用方式</span></div></div></section><article class="content"><h1 id="hubstudio-cli-命令行操作手册">Hubstudio CLI 命令行操作手册</h1>
+<a class="toc-link level-2" href="#常见问题">常见问题</a></nav></aside><div class="main-wrap"><main><section class="hero"><h1>Hubstudio CLI 命令行操作手册</h1><p>面向产品用户的命令行指南，覆盖快速开始、请求体写法、命令分组和每个 Local API 子命令的参数清单。</p></section><article class="content"><h1 id="hubstudio-cli-命令行操作手册">Hubstudio CLI 命令行操作手册</h1>
 <p><code>hubstudio-cli</code> 是随 Hubstudio 客户端分发的独立命令行工具，用于通过命令行调用 Hubstudio 客户端的 Local API。</p>
 <p>它不会启动 Hubstudio 客户端，也不依赖 Node.js。使用前需要先启动 Hubstudio 客户端、完成登录，并在客户端中开启本地 API。</p>
 <p>官网 Local API 文档入口：<a href="https://api-docs.hubstudio.cn/">API 使用说明文档</a>。</p>
@@ -3129,13 +3135,15 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <td>确认使用的是最新版本 <code>hubstudio-cli</code>；如仍缺失，请联系 Hubstudio 支持。</td>
 </tr>
 </tbody>
-</table></article></main><aside class="right-rail"><div class="rail-card"><b>65</b><br />CLI 子命令<br /><br /><b>2026-05-21</b><br />文档更新时间</div></aside></div></div>
+</table></article></main></div></div>
   </div>
-  <a class="back-to-top" href="#hubstudio-cli-命令行操作手册" aria-label="回到顶部">↑</a>
+  <a class="back-to-top" href="#top" aria-label="回到顶部">↑</a>
   <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="搜索文档"><div class="search-dialog"><div class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="搜索环境列表、子命令或参数" autocomplete="off" /><button class="search-close" type="button" id="closeSearch" aria-label="关闭搜索">×</button></div><div class="search-results" id="searchResults"></div></div></div>
   <script>
     const root=document.documentElement;const btn=document.getElementById('themeToggle');const saved=localStorage.getItem('hubstudio-doc-theme');if(saved)root.dataset.theme=saved;function syncThemeText(){btn.textContent=root.dataset.theme==='dark'?'☾':'☀';btn.title=root.dataset.theme==='dark'?'切换浅色模式':'切换暗黑模式';}syncThemeText();btn.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('hubstudio-doc-theme',root.dataset.theme);syncThemeText();});
     document.querySelectorAll('pre').forEach((pre)=>{const b=document.createElement('button');b.className='copy-btn';b.type='button';b.textContent='复制';b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(pre.innerText.replace(/^复制\n/,''));b.textContent='已复制';setTimeout(()=>b.textContent='复制',1200);}catch(e){b.textContent='复制失败';setTimeout(()=>b.textContent='复制',1200);}});pre.appendChild(b);});
+    
+    function buildCollapsibleToc(){const nav=document.querySelector('.sidebar nav');if(!nav)return;const nodes=[...nav.children];for(let i=0;i<nodes.length;i++){const link=nodes[i];if(!link.classList||!link.classList.contains('level-3'))continue;const children=[];let next=link.nextElementSibling;while(next&&next.classList&&next.classList.contains('level-4')){children.push(next);next=next.nextElementSibling;}if(!children.length)continue;const group=document.createElement('div');group.className='toc-group';const head=document.createElement('div');head.className='toc-group-head';const toggle=document.createElement('button');toggle.className='toc-toggle';toggle.type='button';toggle.textContent='⌄';toggle.setAttribute('aria-label','折叠或展开 '+link.textContent.trim());const childWrap=document.createElement('div');childWrap.className='toc-children';link.parentNode.insertBefore(group,link);head.appendChild(toggle);head.appendChild(link);group.appendChild(head);children.forEach(child=>childWrap.appendChild(child));group.appendChild(childWrap);toggle.addEventListener('click',(e)=>{e.preventDefault();group.classList.toggle('collapsed');});i=nodes.indexOf(children[children.length-1]);}}buildCollapsibleToc();
     const overlay=document.getElementById('searchOverlay');const input=document.getElementById('searchInput');const results=document.getElementById('searchResults');const openSearch=document.getElementById('openSearch');const closeSearch=document.getElementById('closeSearch');
     const searchIndex=[...document.querySelectorAll('.toc-link')].map((a)=>({title:a.textContent.trim(),href:a.getAttribute('href'),level:[...a.classList].find(c=>c.startsWith('level-'))||''}));
     function openSearchDialog(){overlay.classList.add('open');input.value='';renderSearch('');setTimeout(()=>input.focus(),30);}function closeSearchDialog(){overlay.classList.remove('open');}

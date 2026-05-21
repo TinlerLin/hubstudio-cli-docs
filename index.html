@@ -1,41 +1,60 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hubstudio CLI 命令行操作手册</title>
+  <link rel="icon" href="https://cdn.apifox.com/app/project-icon/custom/20251121/89966761-b809-4240-bc20-f1b84e02e347.png" />
   <style>
-    :root { --bg:#f6f8fc; --panel:#fff; --panel-soft:#f9fbff; --text:#1f2937; --muted:#667085; --line:#e4e9f2; --blue:#2f6bff; --blue-dark:#1849cf; --blue-soft:#edf3ff; --code-bg:#f1f4f9; --shadow:0 18px 50px rgba(28,39,76,.08); --radius:14px; color-scheme:light; }
+    :root {
+      --ui-primary-color:#587DF1; --ui-primary-color-hover:#4c68c6; --ui-primary-color-active:#909ff6;
+      --ui-body-background:#ffffff; --ui-fill:#ffffff; --ui-fill-secondary:#f8fafc; --ui-fill-tertiary:#f5f7fb;
+      --ui-text:#1f2329; --ui-text-sub:#5f6b7a; --ui-text-tertiary:#8a94a6;
+      --ui-border:#e5e6eb; --ui-border-split:#eef0f5; --ui-code-bg:#f2f3f5; --ui-hover:#f3f6ff;
+      --ui-sidebar-width:300px; --ui-topbar-height:56px; --ui-radius:8px;
+      color-scheme:light;
+    }
+    [data-theme="dark"] {
+      --ui-primary-color:#587DF1; --ui-primary-color-hover:#8195f5; --ui-primary-color-active:#485fb1;
+      --ui-body-background:#1a1922; --ui-fill:#202030; --ui-fill-secondary:#232437; --ui-fill-tertiary:#2b2f4d;
+      --ui-text:#f2f4f8; --ui-text-sub:#bdc5d1; --ui-text-tertiary:#8f99aa;
+      --ui-border:#30365d; --ui-border-split:#2b2f4d; --ui-code-bg:#2b2f4d; --ui-hover:#232b4d;
+      color-scheme:dark;
+    }
     * { box-sizing:border-box; } html { scroll-behavior:smooth; }
-    body { margin:0; color:var(--text); background:radial-gradient(circle at 12% -10%, rgba(47,107,255,.14), transparent 32rem), linear-gradient(180deg,#f8fbff 0%,var(--bg) 32rem); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; line-height:1.72; }
-    a { color:var(--blue); text-decoration:none; } a:hover { color:var(--blue-dark); text-decoration:underline; }
-    .topbar { position:sticky; top:0; z-index:30; height:60px; display:flex; align-items:center; justify-content:space-between; padding:0 24px; background:rgba(255,255,255,.86); backdrop-filter:blur(18px); border-bottom:1px solid var(--line); }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:700; }
-    .logo { width:32px; height:32px; display:grid; place-items:center; border-radius:10px; color:white; background:linear-gradient(135deg,#2f6bff,#58a6ff); box-shadow:0 10px 24px rgba(47,107,255,.24); font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
-    .top-actions { color:var(--muted); font-size:13px; }
-    .layout { display:grid; grid-template-columns:300px minmax(0,1fr); gap:28px; max-width:1680px; margin:0 auto; padding:24px; }
-    .sidebar { position:sticky; top:84px; height:calc(100vh - 108px); overflow:auto; padding:18px; border:1px solid var(--line); border-radius:var(--radius); background:rgba(255,255,255,.82); box-shadow:var(--shadow); }
-    .sidebar-title { font-size:13px; font-weight:700; color:var(--muted); margin-bottom:12px; }
-    .toc-link { display:block; padding:6px 10px; border-radius:9px; color:#344054; font-size:13px; line-height:1.42; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .toc-link:hover { text-decoration:none; background:var(--blue-soft); color:var(--blue-dark); } .level-1 { font-weight:800; margin-top:4px; } .level-2 { font-weight:700; margin-top:8px; } .level-3 { padding-left:22px; color:#475467; } .level-4 { padding-left:34px; color:#667085; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:12px; }
-    main { min-width:0; } .hero { margin-bottom:18px; padding:34px; border:1px solid var(--line); border-radius:22px; background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(239,245,255,.96)); box-shadow:var(--shadow); }
-    .eyebrow { display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; color:var(--blue-dark); background:var(--blue-soft); font-size:13px; font-weight:700; }
-    .hero h1 { margin:14px 0 8px; font-size:clamp(30px,4vw,48px); letter-spacing:-.04em; line-height:1.08; } .hero p { max-width:860px; color:var(--muted); margin:0; }
-    .stats { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; } .stat { padding:12px 14px; min-width:138px; border:1px solid var(--line); border-radius:14px; background:white; } .stat b { display:block; font-size:22px; line-height:1.1; } .stat span { color:var(--muted); font-size:12px; }
-    .content { padding:10px 34px 48px; border:1px solid var(--line); border-radius:22px; background:rgba(255,255,255,.95); box-shadow:var(--shadow); } .content h1 { display:none; }
-    .content h2 { margin:42px -10px 18px; padding:18px 10px 12px; border-top:1px solid var(--line); font-size:26px; letter-spacing:-.02em; } .content h2:first-child { border-top:0; } .content h3 { margin-top:32px; font-size:21px; } .content h4,.content h5 { scroll-margin-top:90px; margin:28px 0 10px; font-size:18px; }
-    .endpoint-title { padding:14px 16px; border:1px solid var(--line); border-left:4px solid var(--blue); border-radius:14px; background:var(--panel-soft); }
-    p,li { color:#344054; } ul { padding-left:1.35rem; } code { padding:.16em .42em; border-radius:6px; background:var(--code-bg); color:#263043; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.92em; }
-    pre { position:relative; overflow:auto; padding:16px 18px; border:1px solid #d9e1ef; border-radius:14px; background:#0f172a; color:#dbeafe; line-height:1.58; } pre code { padding:0; background:transparent; color:inherit; }
-    .copy-btn { position:absolute; top:10px; right:10px; border:1px solid rgba(255,255,255,.18); border-radius:8px; background:rgba(255,255,255,.08); color:#dbeafe; padding:4px 8px; font-size:12px; cursor:pointer; }
-    table { width:100%; border-collapse:separate; border-spacing:0; margin:14px 0 24px; font-size:14px; } .content table { display:block; overflow-x:auto; border:1px solid var(--line); border-radius:14px; } th { text-align:left; color:#344054; background:#f8fafc; font-weight:700; } th,td { padding:12px 14px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); vertical-align:top; } tr:last-child td { border-bottom:0; } th:last-child,td:last-child { border-right:0; } td:nth-child(1),td:nth-child(2) { white-space:nowrap; }
-    blockquote { margin:16px 0; padding:12px 16px; border-left:4px solid var(--blue); background:var(--blue-soft); border-radius:10px; } .back-to-top { position:fixed; right:22px; bottom:22px; width:42px; height:42px; border-radius:999px; border:1px solid var(--line); background:white; box-shadow:var(--shadow); display:grid; place-items:center; color:var(--blue); font-weight:800; }
-    @media (max-width:1100px) { .layout { grid-template-columns:1fr; } .sidebar { position:relative; top:0; height:auto; max-height:360px; } } @media (max-width:720px) { .topbar { padding:0 14px; } .layout { padding:12px; } .hero,.content { padding:22px 16px; } .top-actions { display:none; } table { font-size:13px; } }
+    body { margin:0; background:var(--ui-body-background); color:var(--ui-text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; font-size:14px; line-height:1.75; }
+    a { color:var(--ui-primary-color); text-decoration:none; } a:hover { color:var(--ui-primary-color-hover); text-decoration:none; }
+    .app-shell { min-height:100vh; background:var(--ui-body-background); }
+    .topbar { position:sticky; top:0; z-index:50; height:var(--ui-topbar-height); display:flex; align-items:center; justify-content:space-between; padding:0 22px; border-bottom:1px solid var(--ui-border); background:color-mix(in srgb, var(--ui-fill) 92%, transparent); backdrop-filter:blur(14px); }
+    .brand { display:flex; align-items:center; gap:10px; min-width:0; }
+    .brand img { width:28px; height:28px; border-radius:7px; } .brand-title { font-weight:600; font-size:15px; } .brand-subtitle { color:var(--ui-text-tertiary); font-size:12px; margin-left:8px; }
+    .top-actions { display:flex; align-items:center; gap:12px; } .doc-link { color:var(--ui-text-sub); font-size:13px; }
+    .theme-toggle { border:1px solid var(--ui-border); background:var(--ui-fill-secondary); color:var(--ui-text); border-radius:7px; padding:5px 10px; cursor:pointer; font-size:13px; } .theme-toggle:hover { border-color:var(--ui-primary-color); color:var(--ui-primary-color); }
+    .layout { display:grid; grid-template-columns:var(--ui-sidebar-width) minmax(0,1fr); min-height:calc(100vh - var(--ui-topbar-height)); }
+    .sidebar { position:sticky; top:var(--ui-topbar-height); height:calc(100vh - var(--ui-topbar-height)); overflow:auto; border-right:1px solid var(--ui-border); background:var(--ui-fill); padding:16px 12px 24px; }
+    .sidebar-header { padding:4px 10px 12px; color:var(--ui-text-tertiary); font-size:12px; font-weight:600; }
+    .toc-link { display:block; color:var(--ui-text-sub); border-radius:7px; padding:6px 10px; line-height:1.45; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .toc-link:hover { background:var(--ui-hover); color:var(--ui-primary-color); } .level-1 { font-weight:600; color:var(--ui-text); } .level-2 { margin-top:4px; font-weight:600; color:var(--ui-text); } .level-3 { padding-left:22px; } .level-4 { padding-left:34px; font-size:12px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    .main-wrap { min-width:0; display:grid; grid-template-columns:minmax(0,980px) 220px; gap:36px; padding:32px 44px 72px; }
+    main { min-width:0; } .right-rail { position:sticky; top:calc(var(--ui-topbar-height) + 24px); height:fit-content; padding-top:8px; color:var(--ui-text-tertiary); font-size:12px; } .rail-card { border:1px solid var(--ui-border); border-radius:10px; padding:12px; background:var(--ui-fill); } .rail-card b { color:var(--ui-text); font-size:18px; }
+    .hero { margin-bottom:24px; padding-bottom:22px; border-bottom:1px solid var(--ui-border-split); }
+    .eyebrow { display:inline-flex; align-items:center; gap:6px; color:var(--ui-primary-color); background:var(--ui-hover); border-radius:6px; padding:4px 8px; font-size:12px; font-weight:600; }
+    .hero h1 { margin:14px 0 8px; font-size:34px; line-height:1.18; letter-spacing:-.02em; } .hero p { margin:0; color:var(--ui-text-sub); max-width:760px; }
+    .stats { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; } .stat { border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill); padding:10px 12px; min-width:120px; } .stat b { display:block; font-size:20px; line-height:1.1; } .stat span { color:var(--ui-text-tertiary); font-size:12px; }
+    .content { min-width:0; } .content h1 { display:none; } .content h2 { margin:40px 0 16px; padding-top:22px; border-top:1px solid var(--ui-border-split); font-size:24px; line-height:1.35; } .content h2:first-child { border-top:0; margin-top:0; } .content h3 { margin:30px 0 12px; font-size:20px; } .content h4,.content h5 { scroll-margin-top:76px; margin:24px 0 10px; font-size:17px; }
+    .endpoint-title { display:flex; align-items:center; gap:10px; border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill-secondary); padding:12px 14px; } .endpoint-title::before { content:"POST"; flex:0 0 auto; color:#fff; background:var(--ui-primary-color); border-radius:5px; padding:2px 7px; font-size:11px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    p,li { color:var(--ui-text-sub); } ul { padding-left:1.35rem; }
+    code { background:var(--ui-code-bg); color:var(--ui-text); border:1px solid var(--ui-border-split); border-radius:5px; padding:.12em .4em; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.92em; }
+    pre { position:relative; overflow:auto; padding:16px; border:1px solid var(--ui-border); border-radius:10px; background:var(--ui-fill-secondary); color:var(--ui-text); } pre code { background:transparent; border:0; padding:0; } .copy-btn { position:absolute; right:10px; top:10px; border:1px solid var(--ui-border); border-radius:6px; background:var(--ui-fill); color:var(--ui-text-sub); font-size:12px; padding:3px 8px; cursor:pointer; }
+    table { width:100%; border-collapse:collapse; margin:12px 0 24px; font-size:14px; } .content table { display:block; overflow-x:auto; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill); } th,td { padding:11px 12px; border-right:1px solid var(--ui-border); border-bottom:1px solid var(--ui-border); vertical-align:top; } th { background:var(--ui-fill-secondary); color:var(--ui-text); font-weight:600; } tr:last-child td { border-bottom:0; } th:last-child,td:last-child { border-right:0; } td:nth-child(1),td:nth-child(2) { white-space:nowrap; }
+    .back-to-top { position:fixed; right:22px; bottom:22px; width:38px; height:38px; display:grid; place-items:center; border:1px solid var(--ui-border); border-radius:8px; background:var(--ui-fill); color:var(--ui-primary-color); }
+    @media (max-width:1200px) { .main-wrap { grid-template-columns:minmax(0,1fr); } .right-rail { display:none; } } @media (max-width:900px) { .layout { grid-template-columns:1fr; } .sidebar { position:relative; top:0; height:auto; max-height:360px; border-right:0; border-bottom:1px solid var(--ui-border); } .main-wrap { padding:24px 18px 56px; } .brand-subtitle,.doc-link { display:none; } }
   </style>
 </head>
 <body>
-  <header class="topbar"><div class="brand"><span class="logo">H</span><span>Hubstudio CLI</span></div><div class="top-actions">Local API 命令行操作手册 · 2026-05-21</div></header>
-  <div class="layout"><aside class="sidebar" aria-label="页面目录"><div class="sidebar-title">页面目录</div><nav><a class="toc-link level-1" href="#hubstudio-cli-命令行操作手册">Hubstudio CLI 命令行操作手册</a>
+  <div class="app-shell">
+    <header class="topbar"><div class="brand"><img src="https://cdn.apifox.com/app/project-icon/custom/20251121/89966761-b809-4240-bc20-f1b84e02e347.png" alt="Hubstudio" /><span class="brand-title">Hubstudio</span><span class="brand-subtitle">CLI 命令行操作手册</span></div><div class="top-actions"><a class="doc-link" href="https://api-docs.hubstudio.cn/">API 使用说明文档</a><button class="theme-toggle" type="button" id="themeToggle">暗黑模式</button></div></header>
+    <div class="layout"><aside class="sidebar" aria-label="页面目录"><div class="sidebar-header">页面目录</div><nav><a class="toc-link level-1" href="#hubstudio-cli-命令行操作手册">Hubstudio CLI 命令行操作手册</a>
 <a class="toc-link level-2" href="#适用对象">适用对象</a>
 <a class="toc-link level-2" href="#快速开始">快速开始</a>
 <a class="toc-link level-2" href="#常用命令速查">常用命令速查</a>
@@ -85,7 +104,7 @@
 <a class="toc-link level-4" href="#group-list">group-list</a>
 <a class="toc-link level-4" href="#group-create">group-create</a>
 <a class="toc-link level-4" href="#group-del">group-del</a>
-<a class="toc-link level-2" href="#常见问题">常见问题</a></nav></aside><main><section class="hero"><span class="eyebrow">Local API · CLI Manual</span><h1>Hubstudio CLI 命令行操作手册</h1><p>面向产品用户的命令行指南，覆盖快速开始、请求体写法、命令分组和每个 Local API 子命令的参数清单。</p><div class="stats"><div class="stat"><b>65</b><span>子命令详情</span></div><div class="stat"><b>5</b><span>业务分组</span></div><div class="stat"><b>POST</b><span>Local API 调用方式</span></div></div></section><article class="content"><h1 id="hubstudio-cli-命令行操作手册">Hubstudio CLI 命令行操作手册</h1>
+<a class="toc-link level-2" href="#常见问题">常见问题</a></nav></aside><div class="main-wrap"><main><section class="hero"><span class="eyebrow">Hubstudio Local API</span><h1>Hubstudio CLI 命令行操作手册</h1><p>面向产品用户的命令行指南，覆盖快速开始、请求体写法、命令分组和每个 Local API 子命令的参数清单。</p><div class="stats"><div class="stat"><b>65</b><span>子命令详情</span></div><div class="stat"><b>5</b><span>业务分组</span></div><div class="stat"><b>POST</b><span>Local API 调用方式</span></div></div></section><article class="content"><h1 id="hubstudio-cli-命令行操作手册">Hubstudio CLI 命令行操作手册</h1>
 <p><code>hubstudio-cli</code> 是随 Hubstudio 客户端分发的独立命令行工具，用于通过命令行调用 Hubstudio 客户端的 Local API。</p>
 <p>它不会启动 Hubstudio 客户端，也不依赖 Node.js。使用前需要先启动 Hubstudio 客户端、完成登录，并在客户端中开启本地 API。</p>
 <p>官网 Local API 文档入口：<a href="https://api-docs.hubstudio.cn/">API 使用说明文档</a>。</p>
@@ -3088,8 +3107,9 @@ HUBSTUDIO_USER_DATA=&quot;$HOME/.config/hubstudio-client&quot; hubstudio-cli bro
 <td>确认使用的是最新版本 <code>hubstudio-cli</code>；如仍缺失，请联系 Hubstudio 支持。</td>
 </tr>
 </tbody>
-</table></article></main></div>
+</table></article></main><aside class="right-rail"><div class="rail-card"><b>65</b><br />CLI 子命令<br /><br /><b>2026-05-21</b><br />文档更新时间</div></aside></div></div>
+  </div>
   <a class="back-to-top" href="#hubstudio-cli-命令行操作手册" aria-label="回到顶部">↑</a>
-  <script>document.querySelectorAll('pre').forEach((pre)=>{const btn=document.createElement('button');btn.className='copy-btn';btn.type='button';btn.textContent='复制';btn.addEventListener('click',async()=>{const text=pre.innerText.replace(/^复制\n/,'');try{await navigator.clipboard.writeText(text);btn.textContent='已复制';setTimeout(()=>btn.textContent='复制',1200);}catch(e){btn.textContent='复制失败';setTimeout(()=>btn.textContent='复制',1200);}});pre.appendChild(btn);});</script>
+  <script>const root=document.documentElement;const btn=document.getElementById('themeToggle');const saved=localStorage.getItem('hubstudio-doc-theme');if(saved)root.dataset.theme=saved;function syncThemeText(){btn.textContent=root.dataset.theme==='dark'?'浅色模式':'暗黑模式';}syncThemeText();btn.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('hubstudio-doc-theme',root.dataset.theme);syncThemeText();});document.querySelectorAll('pre').forEach((pre)=>{const b=document.createElement('button');b.className='copy-btn';b.type='button';b.textContent='复制';b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(pre.innerText.replace(/^复制\n/,''));b.textContent='已复制';setTimeout(()=>b.textContent='复制',1200);}catch(e){b.textContent='复制失败';setTimeout(()=>b.textContent='复制',1200);}});pre.appendChild(b);});</script>
 </body>
 </html>
